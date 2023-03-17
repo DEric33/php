@@ -1,3 +1,7 @@
+<?php
+include "connect.php";
+$db = connect();
+?>
 <!doctype html>
 <html lang="en">
   <head>
@@ -40,13 +44,18 @@
   <main>
     <div class="row row-cols-1 row-cols-md-3 mb-3 text-center">
       <!-- Wash Card -->
+<?php
+$serviceQuery = $db->query("SELECT price FROM services WHERE name = 'Wash'");
+$serviceResult = $serviceQuery->fetch(PDO::FETCH_ASSOC);
+$price = $serviceResult['price'];
+?>
       <div class="col">
         <div class="card mb-4 rounded-3 shadow-sm">
           <div class="card-header py-3">
             <h4 class="my-0 fw-normal">Wash</h4>
           </div>
           <div class="card-body">
-            <h1 class="card-title pricing-card-title">$10</h1>
+            <h1 class="card-title pricing-card-title">$<?=$price;?></h1>
             <ul class="list-unstyled mt-3 mb-4">
               <li>Basic Wash</li>
               <li>Standard Shampoo</li>
@@ -57,13 +66,18 @@
         </div>
       </div>
       <!-- Trim Card -->
+      <?php
+$serviceQuery = $db->query("SELECT price FROM services WHERE name = 'Trim'");
+$serviceResult = $serviceQuery->fetch(PDO::FETCH_ASSOC);
+$price = $serviceResult['price'];
+?>
       <div class="col">
         <div class="card mb-4 rounded-3 shadow-sm">
           <div class="card-header py-3">
             <h4 class="my-0 fw-normal">Trim</h4>
           </div>
           <div class="card-body">
-            <h1 class="card-title pricing-card-title">$25</h1>
+            <h1 class="card-title pricing-card-title">$<?=$price;?></h1>
             <ul class="list-unstyled mt-3 mb-4">
               <li>Standard Trim</li>
               <li>Custom Styles Available</li>
@@ -74,13 +88,18 @@
         </div>
       </div>
       <!-- Full Grooming Card -->
+      <?php
+$serviceQuery = $db->query("SELECT price FROM services WHERE name = 'Full Grooming'");
+$serviceResult = $serviceQuery->fetch(PDO::FETCH_ASSOC);
+$price = $serviceResult['price'];
+?>
       <div class="col">
         <div class="card mb-4 rounded-3 shadow-sm border-primary">
           <div class="card-header py-3 text-bg-primary border-primary">
             <h4 class="my-0 fw-normal">Full Grooming</h4>
           </div>
           <div class="card-body">
-            <h1 class="card-title pricing-card-title">$50</h1>
+            <h1 class="card-title pricing-card-title">$<?=$price;?></h1>
             <ul class="list-unstyled mt-3 mb-4">
               <li>Luxury Wash</li>
               <li>Elite Trim</li>
